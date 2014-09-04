@@ -14,7 +14,7 @@
     <body>
         <h1>The area is...</h1>
         <%
-            Object obj = request.getAttribute("recArea");
+            Object obj = request.getAttribute("area");
             if (obj == null) {
                 out.println("Something has gone horribly wrong");
             } else {

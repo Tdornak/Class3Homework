@@ -6,18 +6,47 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Rectangle Area Calculator</title>
+        <title>Area Calculator</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/areaCalculator.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h2>Rectangle Area Calculator, Integers only</h2>
-        <form name="areaCalculator" method="POST" action="Calc">
-            <label id="lblWidth">Enter width</label>
-            <input type="text" name="txtWidth" value=""><br>
-            <label id="lblHeight">Enter height</label>
-            <input type="text" name="txtHeight" value=""><br>
-            <input type="submit" name="Submit">
-        </form>
+        <div class="container">
+            <h2>Rectangle Area Calculator</h2>
+            <form id="rectangleAreaCalculator" name="rectangleAreaCalculator" method="POST" action="Calc">
+                <p>
+                <label id="rectangleLblWidth" for="rectangleTxtWidth" form="rectangleAreaCalculator">Enter width:</label>
+                <input type="text" name="txtWidth" id="rectangleTxtWidth" value=""><br>
+                </p>
+                <p>
+                <label id="rectangleLblHeight" for="rectangleTxtHeight" form="rectangleAreaCalculator">Enter height:</label>
+                <input type="text" name="txtHeight" id="rectangleTxtHeight" value=""><br>
+                </p>
+                <input type="submit" name="submit" value="Rectangle">
+            </form>
+            
+            <h2>Triangle Area Calculator</h2>
+            <form id="triangleAreaCalculator" name="triangleAreaCalculator" method="POST" action="Calc">
+                <p>
+                <label id="triangleLblWidth" for="triangleTxtWidth" form="triangleAreaCalculator">Enter width:</label>
+                <input type="text" name="txtWidth" id="triangleTxtWidth" value=""><br>
+                </p>
+                <p>
+                <label id="triangleLblHeight" for="triangleTxtHeight" form="triangleAreaCalculator">Enter height:</label>
+                <input type="text" name="txtHeight" id="triangleTxtHeight" value=""><br>
+                </p>
+                <input type="submit" name="submit" value="Triangle">
+            </form>
+            
+            <h2>Circle Area Calculator</h2>
+            <form id="circleAreaCalculator" name="circleAreaCalculator" method="POST" action="Calc">
+                <p>
+                <label id="circleLblRadius" for="circleTxtRadius" form="circleAreaCalculator">Enter radius:</label>
+                <input type="text" name="txtWidth" id="circleTxtRadius" value=""><br>
+                </p>
+                <input type="submit" name="submit" value="Circle">
+            </form>
+        </div>
     </body>
 </html>

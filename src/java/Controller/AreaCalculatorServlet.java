@@ -6,9 +6,8 @@
 
 package Controller;
 
-import Model.RectangleCalculator;
+import Model.AreaCalculatorService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author tdornak
  */
 @WebServlet(name = "RectangleServlet", urlPatterns = {"/Calc"})
-public class RectangleServlet extends HttpServlet {
+public class AreaCalculatorServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,28 +32,45 @@ public class RectangleServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    private static final String RESULT_PAGE = "/Result.jsp";
+    private static final String RESULT_PAGE = "/index.jsp";
+    private double width = 0;
+    private double height = 0;
+    private String name = "";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
-        String sWidth = request.getParameter("txtWidth");
-        int width = Integer.parseInt(sWidth);
         
-        String sHeight = request.getParameter("txtHeight");
-        int height = Integer.parseInt(sHeight);
+        name = request.getParameter("submit");
         
-        RectangleCalculator recCalc = new RectangleCalculator();
-        String area = recCalc.calculateArea(width, height);
+        if (name.equalsIgnoreCase("circle")) {
+            AreaCircle(request);
+        } else {
+            String sWidth = request.getParameter("txtWidth");
+            width = Double.parseDouble(sWidth);
+            
+            String sHeight = request.getParameter("txtHeight");
+            height = Double.parseDouble(sHeight);
+        }
+
+        AreaCalculatorService calc = new AreaCalculatorService(name);
+        String area = calc.calculateArea(width, height);
         
-        request.setAttribute("recArea", area);
+        request.setAttribute("area", area);
+        request.setAttribute("name", name);
+        
+        
         
         RequestDispatcher view = 
                 request.getRequestDispatcher(RESULT_PAGE);
         view.forward(request, response);
         
         
+    }
+    
+    private void AreaCircle(HttpServletRequest request) {
+        String sWidth = request.getParameter("txtWidth");
+        width = Double.parseDouble(sWidth);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

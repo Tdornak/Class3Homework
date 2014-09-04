@@ -4,12 +4,12 @@ package Model;
  *
  * @author tdornak
  */
-public class RectangleCalculator implements CalculatorStrategy {
+public class CircleCalculator implements CalculatorStrategy {
 
     @Override
     public String calculateArea(double width, double height) {
         
-        double area = width * height;
+        double area = Math.PI * (width * width);
         String areaString = "" + area;
         return areaString;
         
